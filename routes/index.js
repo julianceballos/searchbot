@@ -14,6 +14,13 @@ router.get('/', function(req, res, next) {
             channel: '#test'
         }
     });
+    res.json({
+        ok: true,
+        username: 'SearchBot',
+        text: 'Hola',
+        channel: '#test',
+        attachments: []
+    })
     /*request.get({
         url: 'https://www.googleapis.com/customsearch/v1',
         qs: {
