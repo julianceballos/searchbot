@@ -15,6 +15,7 @@ router.get('/', function(req, res, next) {
     }, function(_err, _req, _res) {
         _res = JSON.parse(_res);
         var results = _res.items || [];
+        console.log(req.query);
         return res.json({
             ok: true,
             username: 'SearchBot',
