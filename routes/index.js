@@ -6,7 +6,15 @@ var express = require('express'),
 router.get('/', function(req, res, next) {
 
     console.log(req.query);
-    request.get({
+    request.post('https://hooks.slack.com/services/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', {
+        form: {
+            ok: true,
+            username: 'SearchBot',
+            text: 'Hola',
+            channel: '#test'
+        }
+    });
+    /*request.get({
         url: 'https://www.googleapis.com/customsearch/v1',
         qs: {
             q: req.query.text,
@@ -36,7 +44,7 @@ router.get('/', function(req, res, next) {
         }, function() {
             res.json(outgoing);
         });
-    });
+    });*/
 
 });
 
