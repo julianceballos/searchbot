@@ -5,6 +5,7 @@ var express = require('express'),
 
 router.get('/', function(req, res, next) {
 
+    console.log(req.query);
     request.get({
         url: 'https://www.googleapis.com/customsearch/v1',
         qs: {
