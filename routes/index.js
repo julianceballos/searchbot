@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
     request.get({
         url: 'https://www.googleapis.com/customsearch/v1',
         qs: {
-            q: req.query.q,
+            q: req.query.text,
             key: 'AIzaSyC9HV5iELexKdY2MHESpgPzUTTlX_QrC5A',
             cx: '014906677786528070915:sonnet7alpa'
         }
