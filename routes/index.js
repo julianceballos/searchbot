@@ -15,8 +15,7 @@ router.get('/', function(req, res, next) {
     }, function(_err, _req, _res) {
         _res = JSON.parse(_res);
         var results = _res.items || [];
-        console.log(req.query);
-        return res.json({
+        var outgoing = {
             ok: true,
             username: 'SearchBot',
             attachments: _.map(results, function(item) {
@@ -25,7 +24,16 @@ router.get('/', function(req, res, next) {
                     title_link: item.link,
                     text: item.snippet
                 };
-            })
+            }),
+            channel: '#' + req.query.channel_name,
+            icon_url: 'https://slack.com/img/icons/app-57.png'
+        };
+        request.post(['https://hooks.slack.com/services', req.query.team_id, req.query.user_id, req.query.token].join('/'), {
+            form: {
+                payload: JSON.stringify(outgoing)
+            }
+        }, function() {
+            res.json(outgoing);
         });
     });
 
